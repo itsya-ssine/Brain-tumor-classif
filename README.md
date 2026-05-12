@@ -6,9 +6,9 @@ State-of-the-art brain tumor classification using three ViT architectures.
 
 | Model | Params | Accuracy | Speed | Best For |
 |---|---|---|---|---|
-| `vit_b16` | 86M | ~97% | Medium | Large datasets |
-| `swin_base` | 88M | **~98-99%** | Medium | Recommended |
-| `hybrid_vit` | ~65M | ~97% | Fast | Small datasets |
+| `vit_b16` | 86M | --- | Medium | Large datasets |
+| `swin_base` | 88M | **~98,95%** | Medium | Recommended |
+| `hybrid_vit` | ~65M | ~99,21% | Fast | Small datasets |
 
 ### Why ViT beats CNNs for MRI tumors?
 - **Global attention** — models long-range spatial dependencies across the entire scan
