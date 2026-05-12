@@ -1,0 +1,86 @@
+Device: cuda
+[Dataset] data/train  →  4571 images  |  classes: {'glioma': 1057, 'meningioma': 1072, 'no-tumor': 1276, 'pituitary': 1166}
+[Dataset] data/val  →  1141 images  |  classes: {'glioma': 264, 'meningioma': 267, 'no-tumor': 319, 'pituitary': 291}
+/usr/local/lib/python3.12/dist-packages/torch/utils/data/dataloader.py:424: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  self.check_worker_number_rationality()
+Downloading: "https://download.pytorch.org/models/resnet50-0676ba61.pth" to /root/.cache/torch/hub/checkpoints/resnet50-0676ba61.pth
+100% 97.8M/97.8M [00:00<00:00, 193MB/s]
+/content/models/vit_model.py:143: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(encoder_layer, num_layers=depth)
+
+====================================================
+  Model: hybrid_vit
+  Total params:       52,209,220
+  Trainable params:   52,209,220
+  Frozen params:               0
+====================================================
+
+
+=================================================================
+  Training HybridViTClassifier for 40 epochs  |  device: cuda
+=================================================================
+
+/usr/local/lib/python3.12/dist-packages/torch/utils/data/dataloader.py:432: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  self.check_worker_number_rationality()
+Ep 001/40  | TrLoss 0.5946  TrAcc 76.99%  | VlLoss 0.3653  VlAcc 87.82%  | LR 4.00e-05  | 156s  ✓ saved
+Ep 002/40  | TrLoss 0.3486  TrAcc 89.11%  | VlLoss 0.2033  VlAcc 93.51%  | LR 6.00e-05  | 168s  ✓ saved
+Ep 003/40  | TrLoss 0.3034  TrAcc 91.86%  | VlLoss 0.2186  VlAcc 95.00%  | LR 8.00e-05  | 168s  ✓ saved
+Ep 004/40  | TrLoss 0.2917  TrAcc 93.42%  | VlLoss 0.1708  VlAcc 96.41%  | LR 1.00e-04  | 169s  ✓ saved
+Ep 005/40  | TrLoss 0.3108  TrAcc 93.20%  | VlLoss 0.2989  VlAcc 92.46%  | LR 1.00e-04  | 165s
+Ep 006/40  | TrLoss 0.2685  TrAcc 93.87%  | VlLoss 0.4755  VlAcc 90.10%  | LR 9.98e-05  | 163s
+Ep 007/40  | TrLoss 0.2177  TrAcc 95.10%  | VlLoss 0.2982  VlAcc 95.09%  | LR 9.92e-05  | 165s
+Ep 008/40  | TrLoss 0.1996  TrAcc 95.56%  | VlLoss 0.1770  VlAcc 96.67%  | LR 9.82e-05  | 166s  ✓ saved
+Ep 009/40  | TrLoss 0.1824  TrAcc 95.73%  | VlLoss 0.2476  VlAcc 95.62%  | LR 9.68e-05  | 164s
+Ep 010/40  | TrLoss 0.1431  TrAcc 96.96%  | VlLoss 0.2151  VlAcc 96.58%  | LR 9.50e-05  | 164s
+Ep 011/40  | TrLoss 0.1572  TrAcc 97.07%  | VlLoss 0.1675  VlAcc 96.93%  | LR 9.29e-05  | 172s  ✓ saved
+Ep 012/40  | TrLoss 0.1365  TrAcc 96.81%  | VlLoss 0.2033  VlAcc 96.23%  | LR 9.05e-05  | 165s
+Ep 013/40  | TrLoss 0.1254  TrAcc 97.27%  | VlLoss 0.1566  VlAcc 97.46%  | LR 8.77e-05  | 167s  ✓ saved
+Ep 014/40  | TrLoss 0.1284  TrAcc 97.53%  | VlLoss 0.3780  VlAcc 95.44%  | LR 8.46e-05  | 165s
+Ep 015/40  | TrLoss 0.1260  TrAcc 97.55%  | VlLoss 0.1586  VlAcc 97.20%  | LR 8.12e-05  | 164s
+Ep 016/40  | TrLoss 0.1183  TrAcc 97.88%  | VlLoss 0.2297  VlAcc 96.76%  | LR 7.75e-05  | 164s
+Ep 017/40  | TrLoss 0.1113  TrAcc 98.01%  | VlLoss 0.1391  VlAcc 97.63%  | LR 7.37e-05  | 167s  ✓ saved
+Ep 018/40  | TrLoss 0.0966  TrAcc 97.92%  | VlLoss 0.3433  VlAcc 94.22%  | LR 6.97e-05  | 164s
+Ep 019/40  | TrLoss 0.0825  TrAcc 98.34%  | VlLoss 0.0853  VlAcc 98.42%  | LR 6.55e-05  | 168s  ✓ saved
+Ep 020/40  | TrLoss 0.0532  TrAcc 98.93%  | VlLoss 0.1681  VlAcc 97.90%  | LR 6.11e-05  | 165s
+Ep 021/40  | TrLoss 0.0585  TrAcc 98.86%  | VlLoss 0.1183  VlAcc 98.07%  | LR 5.67e-05  | 165s
+Ep 022/40  | TrLoss 0.0596  TrAcc 98.95%  | VlLoss 0.0826  VlAcc 98.77%  | LR 5.22e-05  | 167s  ✓ saved
+Ep 023/40  | TrLoss 0.0474  TrAcc 99.06%  | VlLoss 0.1189  VlAcc 98.42%  | LR 4.78e-05  | 164s
+Ep 024/40  | TrLoss 0.0541  TrAcc 98.99%  | VlLoss 0.0882  VlAcc 98.51%  | LR 4.33e-05  | 163s
+Ep 025/40  | TrLoss 0.0348  TrAcc 99.43%  | VlLoss 0.1438  VlAcc 97.98%  | LR 3.89e-05  | 164s
+Ep 026/40  | TrLoss 0.0244  TrAcc 99.45%  | VlLoss 0.1432  VlAcc 98.42%  | LR 3.45e-05  | 165s
+Ep 027/40  | TrLoss 0.0346  TrAcc 99.37%  | VlLoss 0.1035  VlAcc 98.16%  | LR 3.03e-05  | 164s
+Ep 028/40  | TrLoss 0.0320  TrAcc 99.30%  | VlLoss 0.0833  VlAcc 98.77%  | LR 2.63e-05  | 164s
+Ep 029/40  | TrLoss 0.0192  TrAcc 99.63%  | VlLoss 0.1232  VlAcc 98.25%  | LR 2.25e-05  | 164s
+Ep 030/40  | TrLoss 0.0221  TrAcc 99.52%  | VlLoss 0.0782  VlAcc 98.86%  | LR 1.88e-05  | 174s  ✓ saved
+Ep 031/40  | TrLoss 0.0138  TrAcc 99.63%  | VlLoss 0.0699  VlAcc 98.69%  | LR 1.54e-05  | 165s
+Ep 032/40  | TrLoss 0.0160  TrAcc 99.54%  | VlLoss 0.0823  VlAcc 98.69%  | LR 1.23e-05  | 164s
+Ep 033/40  | TrLoss 0.0153  TrAcc 99.72%  | VlLoss 0.0824  VlAcc 98.86%  | LR 9.55e-06  | 164s
+Ep 034/40  | TrLoss 0.0112  TrAcc 99.82%  | VlLoss 0.0718  VlAcc 98.95%  | LR 7.08e-06  | 166s  ✓ saved
+Ep 035/40  | TrLoss 0.0119  TrAcc 99.67%  | VlLoss 0.0786  VlAcc 99.04%  | LR 4.95e-06  | 168s  ✓ saved
+Ep 036/40  | TrLoss 0.0115  TrAcc 99.74%  | VlLoss 0.0644  VlAcc 99.21%  | LR 3.19e-06  | 168s  ✓ saved
+Ep 037/40  | TrLoss 0.0104  TrAcc 99.76%  | VlLoss 0.0796  VlAcc 98.86%  | LR 1.80e-06  | 165s
+Ep 038/40  | TrLoss 0.0159  TrAcc 99.72%  | VlLoss 0.0709  VlAcc 98.95%  | LR 8.04e-07  | 164s
+Ep 039/40  | TrLoss 0.0038  TrAcc 99.89%  | VlLoss 0.0845  VlAcc 98.86%  | LR 2.01e-07  | 165s
+Ep 040/40  | TrLoss 0.0090  TrAcc 99.80%  | VlLoss 0.0722  VlAcc 98.95%  | LR 1.00e-10  | 165s
+
+  Best Val Accuracy: 99.21%
+  Curves saved → outputs/training_curves.png
+
+=================================================================
+CLASSIFICATION REPORT
+=================================================================
+              precision    recall  f1-score   support
+
+      glioma       0.98      0.99      0.98       264
+  meningioma       0.98      0.99      0.99       267
+    no-tumor       1.00      0.99      0.99       319
+   pituitary       0.99      0.99      0.99       291
+
+    accuracy                           0.99      1141
+   macro avg       0.99      0.99      0.99      1141
+weighted avg       0.99      0.99      0.99      1141
+
+  Confusion matrix saved → outputs/confusion_matrix.png
+
+
+Done. Best model → outputs/best_model.pth

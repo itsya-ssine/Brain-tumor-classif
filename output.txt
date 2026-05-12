@@ -1,0 +1,107 @@
+
+Device: cuda
+[Dataset] data/train  →  4571 images  |  classes: {'glioma': 1057, 'meningioma': 1072, 'no-tumor': 1276, 'pituitary': 1166}
+[Dataset] data/val  →  1141 images  |  classes: {'glioma': 264, 'meningioma': 267, 'no-tumor': 319, 'pituitary': 291}
+/usr/local/lib/python3.12/dist-packages/torch/utils/data/dataloader.py:424: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  self.check_worker_number_rationality()
+Downloading: "https://download.pytorch.org/models/swin_b-68c6b09e.pth" to /root/.cache/torch/hub/checkpoints/swin_b-68c6b09e.pth
+100% 335M/335M [00:02<00:00, 153MB/s]
+
+====================================================
+  Model: swin_base
+  Total params:       87,272,124
+  Trainable params:   87,272,124
+  Frozen params:               0
+====================================================
+
+Backbone frozen for first 5 epochs.
+
+── Stage 1: frozen backbone (5 epochs) ──
+
+=================================================================
+  Training SwinClassifier for 5 epochs  |  device: cuda
+=================================================================
+
+/usr/local/lib/python3.12/dist-packages/torch/utils/data/dataloader.py:432: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  self.check_worker_number_rationality()
+Ep 001/5  | TrLoss 0.8737  TrAcc 70.36%  | VlLoss 0.5674  VlAcc 79.93%  | LR 4.00e-05  | 65s  ✓ saved
+Ep 002/5  | TrLoss 0.7663  TrAcc 75.43%  | VlLoss 0.4353  VlAcc 85.28%  | LR 6.00e-05  | 68s  ✓ saved
+Ep 003/5  | TrLoss 0.7507  TrAcc 76.77%  | VlLoss 0.3898  VlAcc 84.14%  | LR 8.00e-05  | 70s
+Ep 004/5  | TrLoss 0.7497  TrAcc 76.83%  | VlLoss 0.5025  VlAcc 81.68%  | LR 1.00e-04  | 70s
+Ep 005/5  | TrLoss 0.7199  TrAcc 76.77%  | VlLoss 0.4335  VlAcc 83.87%  | LR 1.00e-04  | 70s
+
+  Best Val Accuracy: 85.28%
+  Curves saved → outputs/training_curves.png
+
+=================================================================
+CLASSIFICATION REPORT
+=================================================================
+              precision    recall  f1-score   support
+
+      glioma       0.98      0.60      0.75       264
+  meningioma       0.67      0.84      0.75       267
+    no-tumor       0.88      0.97      0.93       319
+   pituitary       0.90      0.90      0.90       291
+
+    accuracy                           0.84      1141
+   macro avg       0.86      0.83      0.83      1141
+weighted avg       0.86      0.84      0.84      1141
+
+  Confusion matrix saved → outputs/confusion_matrix.png
+
+
+── Stage 2: full fine-tuning (25 epochs) ──
+
+=================================================================
+  Training SwinClassifier for 25 epochs  |  device: cuda
+=================================================================
+
+/usr/local/lib/python3.12/dist-packages/torch/utils/data/dataloader.py:432: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  self.check_worker_number_rationality()
+Ep 001/25  | TrLoss 0.6991  TrAcc 80.00%  | VlLoss 0.1671  VlAcc 93.69%  | LR 1.00e-04  | 183s  ✓ saved
+Ep 002/25  | TrLoss 0.5964  TrAcc 85.01%  | VlLoss 0.1337  VlAcc 96.14%  | LR 1.00e-04  | 182s  ✓ saved
+Ep 003/25  | TrLoss 0.5249  TrAcc 88.80%  | VlLoss 0.1738  VlAcc 95.35%  | LR 9.95e-05  | 177s
+Ep 004/25  | TrLoss 0.5594  TrAcc 87.11%  | VlLoss 0.1301  VlAcc 96.58%  | LR 9.81e-05  | 183s  ✓ saved
+Ep 005/25  | TrLoss 0.4775  TrAcc 90.07%  | VlLoss 0.1248  VlAcc 96.41%  | LR 9.59e-05  | 177s
+Ep 006/25  | TrLoss 0.4751  TrAcc 90.22%  | VlLoss 0.1161  VlAcc 97.55%  | LR 9.27e-05  | 181s  ✓ saved
+Ep 007/25  | TrLoss 0.4295  TrAcc 91.60%  | VlLoss 0.1769  VlAcc 95.97%  | LR 8.88e-05  | 177s
+Ep 008/25  | TrLoss 0.4263  TrAcc 92.01%  | VlLoss 0.0920  VlAcc 97.37%  | LR 8.41e-05  | 176s
+Ep 009/25  | TrLoss 0.4071  TrAcc 93.31%  | VlLoss 0.0898  VlAcc 97.37%  | LR 7.88e-05  | 176s
+Ep 010/25  | TrLoss 0.4153  TrAcc 91.99%  | VlLoss 0.0735  VlAcc 98.07%  | LR 7.30e-05  | 229s  ✓ saved
+Ep 011/25  | TrLoss 0.3701  TrAcc 94.25%  | VlLoss 0.0943  VlAcc 97.37%  | LR 6.67e-05  | 177s
+Ep 012/25  | TrLoss 0.3748  TrAcc 94.55%  | VlLoss 0.0847  VlAcc 98.16%  | LR 6.02e-05  | 223s  ✓ saved
+Ep 013/25  | TrLoss 0.3798  TrAcc 93.87%  | VlLoss 0.1184  VlAcc 97.28%  | LR 5.34e-05  | 177s
+Ep 014/25  | TrLoss 0.3536  TrAcc 93.98%  | VlLoss 0.1317  VlAcc 97.81%  | LR 4.66e-05  | 176s
+Ep 015/25  | TrLoss 0.3741  TrAcc 94.49%  | VlLoss 0.0640  VlAcc 98.69%  | LR 3.98e-05  | 184s  ✓ saved
+Ep 016/25  | TrLoss 0.3452  TrAcc 94.82%  | VlLoss 0.0775  VlAcc 98.16%  | LR 3.33e-05  | 177s
+Ep 017/25  | TrLoss 0.3552  TrAcc 94.66%  | VlLoss 0.1084  VlAcc 98.16%  | LR 2.70e-05  | 177s
+Ep 018/25  | TrLoss 0.3563  TrAcc 94.31%  | VlLoss 0.0692  VlAcc 98.42%  | LR 2.12e-05  | 177s
+Ep 019/25  | TrLoss 0.3620  TrAcc 94.40%  | VlLoss 0.0688  VlAcc 98.60%  | LR 1.59e-05  | 177s
+Ep 020/25  | TrLoss 0.3415  TrAcc 95.65%  | VlLoss 0.0707  VlAcc 98.51%  | LR 1.12e-05  | 176s
+Ep 021/25  | TrLoss 0.3502  TrAcc 95.06%  | VlLoss 0.0552  VlAcc 98.86%  | LR 7.28e-06  | 189s  ✓ saved
+Ep 022/25  | TrLoss 0.3260  TrAcc 95.65%  | VlLoss 0.0548  VlAcc 98.95%  | LR 4.14e-06  | 181s  ✓ saved
+Ep 023/25  | TrLoss 0.3482  TrAcc 94.44%  | VlLoss 0.0572  VlAcc 98.77%  | LR 1.85e-06  | 177s
+Ep 024/25  | TrLoss 0.3235  TrAcc 95.84%  | VlLoss 0.0570  VlAcc 98.95%  | LR 4.66e-07  | 176s
+Ep 025/25  | TrLoss 0.3258  TrAcc 95.62%  | VlLoss 0.0557  VlAcc 98.77%  | LR 1.00e-10  | 176s
+
+  Best Val Accuracy: 98.95%
+  Curves saved → outputs/training_curves.png
+
+=================================================================
+CLASSIFICATION REPORT
+=================================================================
+              precision    recall  f1-score   support
+
+      glioma       0.99      0.98      0.98       264
+  meningioma       0.97      0.98      0.98       267
+    no-tumor       0.99      1.00      1.00       319
+   pituitary       1.00      0.99      0.99       291
+
+    accuracy                           0.99      1141
+   macro avg       0.99      0.99      0.99      1141
+weighted avg       0.99      0.99      0.99      1141
+
+  Confusion matrix saved → outputs/confusion_matrix.png
+
+
+Done. Best model → outputs/best_model.pth
